@@ -9,18 +9,45 @@
 </head>
 <body>
     <form>
-        <div class="">
+        <div id="container">
             <h2>Register</h2>
+            <div class="tab">
+                <section class="input">
+                    <p><label for="name">Name</label></p>
+                    <input type="text" placeholder="enter your name" id="name" required>
+                </section>
+                <section class="input">
+                    <p><label for="email">Email</label></p>
+                    <input type="email" placeholder="example@gmail.com" id="email" required>
+                </section>
+            </div>
+            <div class="tab">
+                <section id="selectors">
+                    <button name="software">Software Development</button>
+                    <button name="userexp">User Experience</button>
+                    <button name="graphic">Graphic Design</button>
+                </section>
+            </div>
+            <div class="tab">
+                <p>Name: </p>
+                <p>Email: </p>
+                <p>Topics: </p>
+                <ul>
+
+                </ul>
+            </div>
+            <div id="continue">
+                <button name="continue" type="button">Continue</button>
+            </div>
         </div>
-        <div>
-            <label for="name">Name</label>
-            <input type="text" placeholder="enter your name" id="name" required>
+        <div id="steps">
+            <p>Step 1 of 3</p>
+            <div>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+            </div>
         </div>
-        <div>
-            <label for="email">Email</label>
-            <input type="email" placeholder="example@gmail.com" id="email" required>
-        </div>
-        <button>Continue</button>
     </form>
 
     <script src="script.js"></script>
