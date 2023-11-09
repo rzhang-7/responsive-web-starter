@@ -1,3 +1,11 @@
+/*
+TODO:
+  * Add click listeners and states for page 2
+  * Fix border radius on steps
+  * Include step counter
+  * Figure out page 3
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500&display=swap');
 
 /* Reset some default styles */
@@ -35,6 +43,15 @@ body {
     flex-direction: column;
 }
 
+button {
+    font-family: 'Inter', sans-serif;
+}
+
+h2 {
+    padding-bottom: 22px;
+    font-weight: 500;
+}
+
 p {
     color: #A1A1A9;
     padding-bottom: 5px;
@@ -42,7 +59,7 @@ p {
 
 form {
     margin: auto;
-    width: 50%;
+    width: 45%;
 }
 
 #container {
@@ -52,13 +69,26 @@ form {
     border-radius: 20px;
 }
 
-#continue {
+#wrapper {
+    padding-top: 28px;
     display: flex;
-    flex-flow: row nowrap;
+    justify-content: center;
 }
 
-#continue button {
-    justify-self: center;
+#continue {
+    color: #E5E7EB;
+    padding: 12px 40px;
+    border-radius: 30px;
+    border: none;
+    background: rgb(101,44,209);
+    background: linear-gradient(0deg, rgba(101,44,209,1) 0%, rgba(132,94,238,1) 100%);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+#continue:hover {
+    filter: brightness(110%);
+    transform: translateY(-2px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
 }
 
 input {
@@ -77,26 +107,67 @@ input {
 }
 
 .input p {
+    font-size: 14px;
+}
 
+.tab {
+    display: none;
 }
 
 #selectors {
     display: flex;
     flex-flow: row wrap;
+    gap: 14px;
 }
 
 #selectors button {
+    color: #A1A1A9;
+    background-color: #394150;
+    text-align: left;
+    border: #4d5562 1px solid;
+    border-radius: 12px;
+    padding: 15px;
     width: 100%;
 }
 
-.step {
-
+#selectors button:hover {
+    border: #845eee 1px solid;
 }
 
-.step.active {
+#steps {
+    /* text-align: center; */
+    padding-top: 12px;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 2%;
+    justify-content: center;
+    align-items: center;
+}
 
+#steps p {
+    color: #394150;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 0;
+    justify-self: start;
+}
+
+.step {
+    height: 12px;
+    width: 12px;
+    margin: 0 4px;
+    background-color: #394150;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* FIXME: Add translucent border */
+.step.active {
+    background-color:#845eee;
+    /* rgba(132, 94, 239, 50%); */
 }
 
 .step.finish {
-
+    background-color:#845eee;
 }
