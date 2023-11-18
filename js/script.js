@@ -1,9 +1,7 @@
-let currentTab = 0;
+let currentTab = 2;
 const tabList = document.getElementsByClassName("tab");
 const stepList = document.getElementsByClassName("step");
 const topicList = document.getElementsByClassName("topic");
-
-showTab(currentTab)
 
 for (let topic of topicList) {
     topic.addEventListener("click", event => {
@@ -14,6 +12,8 @@ for (let topic of topicList) {
         }
     });
 }
+
+showTab(currentTab);
 
 function showTab(tabNum) {
     // Display the current tab
@@ -75,7 +75,10 @@ function validateForm() {
         valid = inputList[0].value !== "" && re.test(inputList[1].value);
     }
     if (currentTab === 1) {
-
+        valid = false;
+        for (let topic of topicList) {
+            valid |= topic.className.includes("selected");
+        }
     }
 
     return valid;

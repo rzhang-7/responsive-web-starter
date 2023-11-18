@@ -156,6 +156,10 @@ input {
   font-weight: 500;
 }
 
+#pg1 {
+  padding-bottom: 1rem;
+}
+
 #steps {
   padding-top: 12px;
   display: flex;

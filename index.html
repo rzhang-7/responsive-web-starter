@@ -24,19 +24,22 @@
             <div class="tab">
                 <h2>What topics are you interested in?</h2>
                 <section id="selectors">
-                    <button name="software" class="topic">Software Development</button>
-                    <button name="userexp" class="topic">User Experience</button>
-                    <button name="graphic" class="topic">Graphic Design</button>
+                    <button name="software" class="topic" type="button">Software Development</button>
+                    <button name="userexp" class="topic" type="button">User Experience</button>
+                    <button name="graphic" class="topic" type="button">Graphic Design</button>
                 </section>
             </div>
             <div class="tab">
                 <h2>Summary</h2>
-                <p>Name: </p>
-                <p>Email: </p>
-                <p>Topics: </p>
-                <ul>
-
-                </ul>
+                <div id="pg1">
+                    <p>Name: <span id="name"></span></p>
+                    <p>Email: <span id="email"></span></p>
+                </div>
+                <div id="pg2">
+                    <p>Topics: </p>
+                    <ul id="topics">
+                    </ul>
+                </div>
             </div>
             <div id="wrapper">
                 <button id="continue" name="continue" type="button" onclick="nextTab()">Continue</button>
