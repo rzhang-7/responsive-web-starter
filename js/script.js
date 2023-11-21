@@ -1,10 +1,12 @@
-let currentTab = 2;
+let currentTab = 0;
+let inputName, inputEmail;
 const tabList = document.getElementsByClassName("tab");
 const stepList = document.getElementsByClassName("step");
 const topicList = document.getElementsByClassName("topic");
 
+// Adds event listeners to all topics on page 2
 for (let topic of topicList) {
-    topic.addEventListener("click", event => {
+    topic.addEventListener("click", (event) => {
         if (topic.className.includes(" selected")) {
             topic.className = topic.className.replace(" selected", "");
         } else {
@@ -19,9 +21,20 @@ function showTab(tabNum) {
     // Display the current tab
     tabList[tabNum].style.display = "block";
 
-    // Change button name according to current tab
-    if (tabNum === (tabList.length - 1)) {
+    // Change button name according to current tab, display proper contents for last page
+    if (tabNum === tabList.length - 1) {
         document.getElementById("continue").textContent = "Confirm";
+
+        document.getElementById("name-val").textContent = inputName;
+        document.getElementById("email-val").textContent = inputEmail;
+        let topics = document.getElementById("topics");
+        for (let topic of topicList) {
+            if (topic.className.includes(" selected")) {
+                let li = document.createElement("li");
+                li.appendChild(document.createTextNode(topic.textContent));
+                topics.appendChild(li);
+            }
+        }
     } else {
         document.getElementById("continue").textContent = "Continue";
     }
@@ -40,7 +53,8 @@ function updateStep(tabNum) {
     stepList[tabNum].className += " active";
 
     // Update step text
-    document.getElementById("step-count").textContent = "Step " + (currentTab + 1) + " of 3";
+    document.getElementById("step-count").textContent =
+        "Step " + (currentTab + 1) + " of 3";
 }
 
 function nextTab() {
@@ -56,8 +70,9 @@ function nextTab() {
     // Move to next tab
     currentTab++;
 
-    // Check if form has been completed
+    // Form has been completed
     if (currentTab >= tabList.length) {
+        alert("✅ Success");
         document.getElementById("regForm").submit();
         return false;
     }
@@ -67,19 +82,27 @@ function nextTab() {
 }
 
 function validateForm() {
+    // Form is valid by default, get input field values
     let valid = true;
     const inputList = tabList[currentTab].getElementsByTagName("input");
 
     if (currentTab === 0) {
-        let re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        valid = inputList[0].value !== "" && re.test(inputList[1].value);
+        // Check if name and email are valid
+        let re =
+            /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        inputName = inputList[0].value;
+        inputEmail = inputList[1].value;
+
+        valid = inputName !== "" && re.test(inputEmail);
     }
     if (currentTab === 1) {
+        // Invalid if no topics are selected
         valid = false;
         for (let topic of topicList) {
             valid |= topic.className.includes("selected");
         }
     }
 
+    // Return result
     return valid;
 }

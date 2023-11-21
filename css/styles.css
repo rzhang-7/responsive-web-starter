@@ -1,14 +1,11 @@
 /*
 TODO:
 
- * Implement topic selection
-
- * Email input should only accept email format
-
- * Users should not be able to continue if topic is not selected.
+* Fix step alignment
 
 */
 
+/* Get font */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500&display=swap");
 
 /* Reset some default styles */
@@ -28,8 +25,20 @@ a {
   color: inherit;
 }
 
-* {
+/* Border box model */
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 /* Add some styles for body*/
@@ -42,7 +51,7 @@ body {
   font-family: "Inter", sans-serif;
   line-height: 1.5;
   background-image: radial-gradient(#0f172a 1px, transparent 0),
-    radial-gradient(#0f172a 1px, transparent 0);
+      radial-gradient(#0f172a 1px, transparent 0);
   background-position: 0 0, 25px 25px;
   background-attachment: fixed;
   background-size: 50px 50px;
@@ -53,6 +62,7 @@ body {
   flex-direction: column;
 }
 
+/* Basic styles */
 button {
   font-family: "Inter", sans-serif;
 }
@@ -67,11 +77,21 @@ p {
   padding-bottom: 5px;
 }
 
-form {
-  margin: auto;
-  width: 45%;
+ul {
+  padding-left: 1rem;
 }
 
+li {
+  padding: 2px 0;
+}
+
+form {
+  margin: auto;
+  max-width: 500px;
+  width: 80%;
+}
+
+/* box styles */
 #container {
   padding: 2.5rem;
   background: #212936;
@@ -85,6 +105,7 @@ form {
   justify-content: center;
 }
 
+/* Button styles */
 #continue {
   color: #e5e7eb;
   padding: 12px 40px;
@@ -92,9 +113,9 @@ form {
   border: none;
   background: rgb(101, 44, 209);
   background: linear-gradient(
-    0deg,
-    rgba(101, 44, 209, 1) 0%,
-    rgba(132, 94, 238, 1) 100%
+      0deg,
+      rgba(101, 44, 209, 1) 0%,
+      rgba(132, 94, 238, 1) 100%
   );
   transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
 }
@@ -105,7 +126,9 @@ form {
   transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
 }
 
-input {
+/* Input field styles */
+input,
+input:-webkit-autofill {
   border: #4d5562 2px solid;
   border-radius: 10px;
   color: #e5e7eb;
@@ -124,10 +147,12 @@ input {
   font-size: 14px;
 }
 
+/* Hide pages/tabs by default */
 .tab {
   display: none;
 }
 
+/* Topic selector styles */
 #selectors {
   display: flex;
   flex-flow: row wrap;
@@ -150,16 +175,25 @@ input {
 }
 
 #selectors .selected {
-  color: #E5E7EB;
-  background-color: #652CD1;
-  border: #845EEE 1px solid;
+  color: #e5e7eb;
+  background-color: #652cd1;
+  border: #845eee 1px solid;
   font-weight: 500;
 }
 
-#pg1 {
+/* Text separation containers */
+.container-1 {
   padding-bottom: 1rem;
 }
 
+/* Output styles */
+#name-val,
+#email-val {
+  color: #e5e7eb;
+  font-weight: 500;
+}
+
+/* Step indicator styles */
 #steps {
   padding-top: 12px;
   display: flex;
@@ -180,7 +214,7 @@ input {
 #step-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  text-align: center;
 }
 
 .step {
