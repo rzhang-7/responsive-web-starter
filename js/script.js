@@ -6,7 +6,7 @@ const topicList = document.getElementsByClassName("topic");
 
 // Adds event listeners to all topics on page 2
 for (let topic of topicList) {
-    topic.addEventListener("click", (event) => {
+    topic.addEventListener("click", () => {
         if (topic.className.includes(" selected")) {
             topic.className = topic.className.replace(" selected", "");
         } else {
@@ -88,12 +88,28 @@ function validateForm() {
 
     if (currentTab === 0) {
         // Check if name and email are valid
+        // if not, prompt user with warnings
         let re =
-            /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        const warning = document.getElementsByClassName("warning");
+
         inputName = inputList[0].value;
         inputEmail = inputList[1].value;
 
-        valid = inputName !== "" && re.test(inputEmail);
+        function validateInput(input, index){
+            if(input === "" || (!re.test(input) && index)){
+                valid = false;
+                warning[index].style.display = "block";
+                inputList[index].className = "invalid";
+            } else {
+                warning[index].style.display = "none";
+                inputList[index].className = "";
+            }
+        }
+
+        validateInput(inputName, 0);
+        validateInput(inputEmail, 1);
+
     }
     if (currentTab === 1) {
         // Invalid if no topics are selected

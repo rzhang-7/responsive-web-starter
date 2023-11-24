@@ -140,6 +140,18 @@ input:-webkit-autofill {
   font-size: 14px;
 }
 
+.invalid {
+  border: #b30000 2px solid;
+  background-color: rgba(179,0,0,10%);
+}
+
+.warning {
+  display: none;
+  color: #ff2e2e;
+  padding: 4px 0 0 0;
+  margin: 0;
+}
+
 /* Hide pages/tabs by default */
 .tab {
   display: none;
